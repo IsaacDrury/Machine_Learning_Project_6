@@ -222,13 +222,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147184393}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 951794959}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 570456364}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &147184398
 MonoBehaviour:
@@ -245,7 +245,6 @@ MonoBehaviour:
   m_SensorName: RayPerceptionSensor
   m_DetectableTags:
   - Food
-  - Poison
   - Wall
   m_RaysPerDirection: 6
   m_MaxRayDegrees: 90
@@ -527,8 +526,8 @@ Transform:
   m_GameObject: {fileID: 360894883}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: -10}
-  m_LocalScale: {x: 20, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: -10.5}
+  m_LocalScale: {x: 22, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 570456364}
@@ -635,8 +634,8 @@ Transform:
   m_GameObject: {fileID: 391675787}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 20}
+  m_LocalPosition: {x: 10.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 22}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 570456364}
@@ -915,6 +914,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 330585546}
+  - {fileID: 147184397}
   - {fileID: 1630835487}
   - {fileID: 391675791}
   - {fileID: 1778576317}
@@ -934,6 +934,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599d8ef878f41374a8aced4fa71883fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agents:
+  - {fileID: 147184393}
+  walls: []
 --- !u!114 &570456366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,8 +950,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodPrefab: {fileID: 6430815147850470574, guid: 8ac2042ff57ee754f83f10793d6b1fb4, type: 3}
-  poisonPrefab: {fileID: 8361243628152604354, guid: a7a330a03e7835f45a8dca87a990c453, type: 3}
+  agents:
+  - {fileID: 147184393}
   foods: []
+  walls: []
   foodAmount: 10
 --- !u!1 &586249247
 GameObject:
@@ -1855,8 +1860,8 @@ Transform:
   m_GameObject: {fileID: 1324092463}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 10}
-  m_LocalScale: {x: 20, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 10.5}
+  m_LocalScale: {x: 22, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 570456364}
@@ -2151,8 +2156,8 @@ Transform:
   m_GameObject: {fileID: 1778576313}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 20}
+  m_LocalPosition: {x: -10.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 22}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 570456364}
@@ -2165,5 +2170,4 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 461639385}
   - {fileID: 570456364}
-  - {fileID: 147184397}
   - {fileID: 1622458144}
