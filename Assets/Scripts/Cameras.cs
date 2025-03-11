@@ -20,7 +20,7 @@ public class Cameras : MonoBehaviour
         }
     }
 
-    public void userMainCam()
+    public void UseMainCam()
     {
         currentCam.SetActive(false);
         currentCam = mainCam;
@@ -28,7 +28,7 @@ public class Cameras : MonoBehaviour
         index = 0;
     }
 
-    public void useAgentCams()
+    public void UseAgentCams()
     {
         if (index == agentCams.Length) 
         {
