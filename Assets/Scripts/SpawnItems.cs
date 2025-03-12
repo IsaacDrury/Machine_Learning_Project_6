@@ -66,4 +66,9 @@ public class SpawnItems : MonoBehaviour
     {
         return foods;
     }
+
+    public int GetFoodAmount()
+    {
+        return foodAmount;
+    }
 }

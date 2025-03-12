@@ -12,7 +12,9 @@ public class MLAgent : Agent
     [SerializeField]
     private int forceMultiplier;
     [SerializeField]
-    private GameObject[] foods;
+    private GameObject[] foods; //May not be necessary
+    [SerializeField]
+    private int foodCount;
 
     public Transform target;
 
@@ -22,6 +24,7 @@ public class MLAgent : Agent
     {
         rb = this.GetComponent<Rigidbody>();
         forceMultiplier = 20;
+        foodCount = trainingEnv.GetComponent<SpawnItems>().GetFoodAmount();
     }
 
     public override void OnEpisodeBegin()
@@ -37,8 +40,8 @@ public class MLAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        //Food and agent positions
-        sensor.AddObservation(target.localPosition);
+        
+        //Agent position
         sensor.AddObservation(this.transform.localPosition);
 
         //Agent velocity
@@ -51,6 +54,7 @@ public class MLAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
+        SetReward(-0.0001f);
         //Agent movement
         Vector3 controlSignal = Vector3.zero;
         controlSignal.x = actionBuffers.ContinuousActions[0];
@@ -61,12 +65,19 @@ public class MLAgent : Agent
         Vector3 newRotation = Vector3.zero;
         newRotation.y = actionBuffers.ContinuousActions[2];
         rb.angularVelocity = newRotation;
+    }
 
-        float targetDistance = Vector3.Distance(this.transform.localPosition, target.localPosition);
-
-        if (targetDistance < 0.99)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Food")
         {
             SetReward(1.0f);
+            foodCount--;
+            Destroy(other.gameObject);
+        }
+        if (foodCount == 0)
+        {
+            EndEpisode();
         }
     }
 }
