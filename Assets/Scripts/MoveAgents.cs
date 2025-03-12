@@ -34,4 +34,10 @@ public class MoveAgents : MonoBehaviour
         }
         this.gameObject.GetComponent<SpawnItems>().SpawnFood();
     }
+
+    public bool CheckAgent(GameObject agent)
+    {
+        if (agents[0] != null && agents[0] == agent) {return true;}
+        return false;
+    }
 }

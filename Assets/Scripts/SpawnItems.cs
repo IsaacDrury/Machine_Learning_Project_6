@@ -61,4 +61,9 @@ public class SpawnItems : MonoBehaviour
             foods.Append(food);
         }
     }
+
+    public GameObject[] GetFoods()
+    {
+        return foods;
+    }
 }
