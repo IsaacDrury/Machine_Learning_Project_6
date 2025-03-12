@@ -14,7 +14,7 @@ public class SpawnItems : MonoBehaviour
     [SerializeField] 
     private GameObject[] walls;
     [SerializeField]
-    private int foodAmount;
+    private int maxFood;
 
     public void SpawnFood()
     {
@@ -22,7 +22,7 @@ public class SpawnItems : MonoBehaviour
         { 
             Destroy(food);
         }
-        for (int i = 0; i < foodAmount; i++)
+        for (int i = 0; i < maxFood; i++)
         {
             bool goodPos = false;
             int x = Random.Range(-9, 10);
@@ -62,13 +62,32 @@ public class SpawnItems : MonoBehaviour
         }
     }
 
-    public GameObject[] GetFoods()
+    public void SetFoodAmount(GameObject eatenFood)
     {
-        return foods;
+        foreach (GameObject food in foods) 
+        { 
+            if (food == eatenFood)
+            {
+                GameObject[] temp = new GameObject[foods.Length - 1];
+                for (int i = 0; i < foods.Length; i ++)
+                {
+                    if (foods[i] != eatenFood)
+                    {
+                        temp.Append(foods[i]);
+                    }
+                }
+                foods = temp;
+                Destroy(eatenFood);
+            }
+        }
     }
 
-    public int GetFoodAmount()
+    public bool allFoodEaten()
     {
-        return foodAmount;
+        if (foods.Length == 0) 
+        {
+            return true;
+        }
+        return false;
     }
 }

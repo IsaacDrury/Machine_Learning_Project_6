@@ -308,8 +308,7 @@ MonoBehaviour:
   MaxStep: 0
   trainingEnv: {fileID: 570456363}
   forceMultiplier: 20
-  foods: []
-  foodCount: 0
+  rotationForceMultiplier: 4
   target: {fileID: 0}
 --- !u!114 &147184401
 MonoBehaviour:
@@ -327,7 +326,7 @@ MonoBehaviour:
     VectorObservationSize: 8
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 3
+      m_NumContinuousActions: 2
       BranchSizes: 01000000
     VectorActionSize: 
     VectorActionDescriptions: []
@@ -1024,7 +1023,7 @@ MonoBehaviour:
   - {fileID: 147184393}
   foods: []
   walls: []
-  foodAmount: 10
+  maxFood: 10
 --- !u!1 &586249247
 GameObject:
   m_ObjectHideFlags: 0
