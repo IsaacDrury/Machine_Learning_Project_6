@@ -45,15 +45,16 @@ public class MLAgent : Agent
         //Agent rotation
         Vector3 newRotation = Vector3.zero;
         newRotation.y = actionBuffers.ContinuousActions[1];
-        this.transform.Rotate(newRotation);
+        this.transform.Rotate(newRotation * rotationForceMultiplier);
     }
 
-    private void OnTriggerEnter(Collision other)
+    public void EnteredTrigger(GameObject food)
     {
-        if (other.gameObject.tag == "Food")
+        SetReward(1.0f);
+        trainingEnv.GetComponent<SpawnItems>().SetFoodAmount(food.gameObject);
+        if (trainingEnv.GetComponent<SpawnItems>().allFoodEaten())
         {
-            SetReward(1.0f);
-            trainingEnv.GetComponent<SpawnItems>().SetFoodAmount(other.gameObject);
+            EndEpisode();
         }
     }
 }

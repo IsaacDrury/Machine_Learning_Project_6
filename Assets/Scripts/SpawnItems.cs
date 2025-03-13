@@ -22,6 +22,7 @@ public class SpawnItems : MonoBehaviour
         { 
             Destroy(food);
         }
+        foods = new GameObject[maxFood];
         for (int i = 0; i < maxFood; i++)
         {
             bool goodPos = false;
@@ -56,24 +57,26 @@ public class SpawnItems : MonoBehaviour
                     }
                 }
             }
-            GameObject food = Instantiate(foodPrefab);
+            GameObject food = Instantiate(foodPrefab, this.gameObject.transform, false);
             food.transform.localPosition = new Vector3(x, 0.5f, z);
-            foods.Append(food);
+            foods[i] = food;
         }
     }
 
     public void SetFoodAmount(GameObject eatenFood)
     {
         foreach (GameObject food in foods) 
-        { 
+        {
             if (food == eatenFood)
             {
                 GameObject[] temp = new GameObject[foods.Length - 1];
+                int iter = 0;
                 for (int i = 0; i < foods.Length; i ++)
                 {
                     if (foods[i] != eatenFood)
                     {
-                        temp.Append(foods[i]);
+                        temp[iter] = foods[i];
+                        iter++;
                     }
                 }
                 foods = temp;
