@@ -385,6 +385,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3229314574975822218, guid: 94b9e6b3a55f9944ea92eaf9393d9e7b, type: 3}
+      propertyPath: m_RayLength
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371097279461542271, guid: 94b9e6b3a55f9944ea92eaf9393d9e7b, type: 3}
+      propertyPath: forceMultiplier
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371097279461542271, guid: 94b9e6b3a55f9944ea92eaf9393d9e7b, type: 3}
+      propertyPath: rotationForceMultiplier
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5914261931559424726, guid: 94b9e6b3a55f9944ea92eaf9393d9e7b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

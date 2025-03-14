@@ -2,8 +2,6 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
-using System.Runtime.CompilerServices;
-using UnityEditor.Rendering;
 
 public class MLAgent : Agent
 {
@@ -14,15 +12,11 @@ public class MLAgent : Agent
     [SerializeField]
     private int rotationForceMultiplier;
 
-    public Transform target;
-
     private Rigidbody rb;
 
     private void Start()
     {
         rb = this.GetComponent<Rigidbody>();
-        forceMultiplier = 20;
-        rotationForceMultiplier = 4;
     }
 
     public override void OnEpisodeBegin()
@@ -37,7 +31,7 @@ public class MLAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
-        SetReward(-0.0001f);
+        AddReward(-0.0001f);
         //Agent movement
         float dir = actionBuffers.ContinuousActions[0];
         rb.linearVelocity = this.transform.forward * forceMultiplier * dir;
@@ -50,7 +44,7 @@ public class MLAgent : Agent
 
     public void EnteredTrigger(GameObject food)
     {
-        SetReward(1.0f);
+        AddReward(1.0f);
         trainingEnv.GetComponent<SpawnItems>().SetFoodAmount(food.gameObject);
         if (trainingEnv.GetComponent<SpawnItems>().allFoodEaten())
         {
